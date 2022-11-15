@@ -3,13 +3,13 @@
     <div v-if="!submitted">
       
         <div class="col-sm-9">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" name="name" v-model="personne.name">
+          <label for="name" class="form-label">Surname</label>
+          <input type="text" class="form-control" id="surname" name="surname" v-model="personne.surname">
         </div>
 
         <div class="col-sm-9">
-          <label for="surname" class="form-label">Surname</label>
-          <input type="text" class="form-control" id="surname" name="surname" v-model="personne.surname">
+          <label for="surname" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" v-model="personne.name">
         </div>
 
         <div class="col-sm-9">
