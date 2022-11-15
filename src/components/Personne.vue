@@ -7,16 +7,18 @@
       {{ currentPersonne.city }}
       -->
 
-      
+      <!--<form method="post" action="/modifier-personne"> -->
         <input type="hidden" name="id" v-model="currentPersonne.id">
-        <div class="col-sm-6">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" name="name" v-model="currentPersonne.name">
-        </div>
 
         <div class="col-sm-6">
           <label for="surname" class="form-label">Surname</label>
           <input type="text" class="form-control" id="surname" name="surname" v-model="currentPersonne.surname">
+        </div>
+
+
+        <div class="col-sm-6">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" v-model="currentPersonne.name">
         </div>
 
         <div class="col-sm-6">
@@ -43,7 +45,7 @@
         
         <p>{{ message }}</p> 
 
-     
+      <!--</form> -->
 
     </div>
     
@@ -88,7 +90,8 @@ export default {
       PersonneDataService.delete(this.currentPersonne.id)
       .then(response => {          
           console.log(response.data);
-          this.$router.push({ name:"/personnes" });
+          this.$router.push({path:'/personnes'});
+          //this.$router.push({ name:"/personnes" });
         })
         .catch(e => {
           console.log(e);
