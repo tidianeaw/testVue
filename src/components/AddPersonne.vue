@@ -43,6 +43,7 @@ import PersonneDataService from "../services/PersonneDataService";
 
 export default {
   name: "add-personne",
+  nextId : 0,
   data() {
     return {
       personne: {
@@ -53,19 +54,33 @@ export default {
         city: ""
       },
       message: "",
+      
       submitted: false
     };
   },
   methods: {
     creerPersonne() {
+      PersonneDataService.getAll()
+      .then(response => {
+        this.nextId = response.data.length + 1;
+        console.log(this.nextId);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+
+      //Appel à PersonneDataService.getAll()
+      // dans le then : compter le nombre de personnes dans le tableau
+      // stocker ce nombre dans une variable
+      // id = varaible +1
       var data = {
-        id: null,
+        id: this.nextId,
         name: this.personne.name,
         surname: this.personne.surname,
         phone: this.personne.phone,
         city: this.personne.city
       };
-      console.log(data);
+      //console.log(data);
 
       // A COMPLETER      
       PersonneDataService.create(data)
