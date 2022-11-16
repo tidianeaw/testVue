@@ -72,7 +72,7 @@ export default {
       //Appel à PersonneDataService.getAll()
       // dans le then : compter le nombre de personnes dans le tableau
       // stocker ce nombre dans une variable
-      // id = varaible +1
+      // id = variable +1
       var data = {
         id: this.nextId,
         name: this.personne.name,
