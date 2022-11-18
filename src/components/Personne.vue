@@ -43,7 +43,9 @@
           Supprimer
         </button>
         
-        <p>{{ message }}</p> 
+        <p></p>
+
+        <p><b>{{ message }}</b></p> 
 
       <!--</form> -->
 
