@@ -12,7 +12,7 @@
 
         <div class="col-sm-6">              
           <div class="input-group has-validation">
-            <span class="input-group-text">Surname</span>
+            <span class="input-group-text" style="min-width:100px;">Nom</span>
             <input type="text" class="form-control" id="surname" name="surname" placeholder="currentPersonne.surname" required="" v-model="currentPersonne.surname">
             <div class="invalid-feedback">
               The surname is required.
@@ -23,7 +23,7 @@
 
         <div class="col-sm-6">              
           <div class="input-group has-validation">
-            <span class="input-group-text">Name</span>
+            <span class="input-group-text" style="min-width:100px;">Prénom</span>
             <input type="text" class="form-control" id="name" name="name" placeholder="currentPersonne.name" required="" v-model="currentPersonne.name">
             <div class="invalid-feedback">
               The name is required.
@@ -34,7 +34,7 @@
 
         <div class="col-sm-6">              
           <div class="input-group has-validation">
-            <span class="input-group-text">Phone</span>
+            <span class="input-group-text" style="min-width:100px;">Téléphone</span>
             <input type="text" class="form-control" id="phone" name="phone" placeholder="currentPersonne.phone" required="" v-model="currentPersonne.phone">
             <div class="invalid-feedback">
               The phone # is required.
@@ -45,7 +45,7 @@
 
         <div class="col-sm-6">              
           <div class="input-group has-validation">
-            <span class="input-group-text">City</span>
+            <span class="input-group-text" style="min-width:100px;">Ville</span>
             <input type="text" class="form-control" id="city" name="city" placeholder="currentPersonne.city" required="" v-model="currentPersonne.city">
             <div class="invalid-feedback">
               The city value is required.
