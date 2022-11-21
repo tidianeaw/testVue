@@ -7,7 +7,7 @@
           <div class="col-md">
             <div class="form-floating mb-6">
               <label for="surname">Nom</label>
-              <input type="text" class="form-control" id="surname" name="surname" v-model="currentPersonne.surname">              
+              <input type="text" class="form-control" id="surname" name="surname" v-model="currentPersonne.surname" onblur="javascript: if (surname.value=='') alert('Champ nom obligatoire');" >              
             </div>
               
           </div>  
@@ -24,7 +24,7 @@
           <div class="col-md">
             <div class="form-floating mb-6">
               <label for="phone">Téléphone</label>
-              <input type="text" class="form-control" id="phone" name="phone" v-model="currentPersonne.phone">              
+              <input type="text" class="form-control" id="phone" name="phone" v-model="currentPersonne.phone" onblur="javascript: if (phone.value=='') alert('Champ nom obligatoire');" >              
             </div>
           </div>          
           <div class="col-md">
