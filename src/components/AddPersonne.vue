@@ -1,86 +1,56 @@
 <template>
+
   <div class="submit-form">
     <div v-if="!submitted">
-
         <input type="hidden" name="id" v-model="personne.id">
-        
-        <div class="col-sm-6">              
-          <div class="input-group has-validation">
-            <span class="input-group-text">Surname</span>
-            <input type="text" class="form-control" id="surname" name="surname" placeholder="JORDAN" required="" v-model="personne.surname">
-            <div class="invalid-feedback">
-              The surname is required.
+
+        <div class="row g-2">
+          <div class="col-md">
+            <div class="form-floating mb-6">
+              <label for="surname">Nom</label>
+              <input type="text" class="form-control" id="surname" name="surname" v-model="personne.surname" placeholder="DJOKOVIC" onblur="javascript: if (surname.value=='') alert('Champ nom obligatoire');" required>              
+            </div>
+              
+          </div>  
+          <div class="col-md">
+            <div class="form-floating mb-6">
+              <label for="name">Prénom</label>
+              <input type="text" class="form-control" id="name" name="name" v-model="personne.name" placeholder="Novak" >              
             </div>
           </div>
-          <br/>
+       </div>
+
+        <br/>
+        <div class="row g-2">
+          <div class="col-md">
+            <div class="form-floating mb-6">
+              <label for="phone">Téléphone</label>
+              <input type="text" class="form-control" id="phone" name="phone" v-model="personne.phone" placeholder="121212" onblur="javascript: if (phone.value=='') alert('Champ téléphone obligatoire');" required>              
+            </div>
+          </div>          
+          <div class="col-md">
+            <div class="form-floating mb-6">
+              <label for="city">Ville</label>
+              <input type="text" class="form-control" id="city" name="city" v-model="personne.city" placeholder="Belgrade" >              
+            </div>
+          </div>
         </div>
+        <br/>
 
-        <div class="col-sm-6">              
-          <div class="input-group has-validation">
-            <span class="input-group-text">Name</span>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Michael" required="" v-model="personne.name">
-            <div class="invalid-feedback">
-              The name is required.
-            </div>
-          </div>
-          <br/>
+        <div class="row g-2">
+          <div class="col-md">
+           <p style="color:#f00">{{ message }}</p>               
+         </div>
+         <div  class="col-md">
+            <!--
+            <button @click="creerPersonne" class="w-20 btn btn-lg btn-dark">Ajouter</button>
+            -->
+            <button type="submit" class="badge badge-success" @click="creerPersonne">Ajouter</button>
+         </div>
         </div>
-
-        <div class="col-sm-6">              
-          <div class="input-group has-validation">
-            <span class="input-group-text">Phone</span>
-            <input type="text" class="form-control" id="phone" name="phone" placeholder="000-0000-000" required="" v-model="personne.phone">
-            <div class="invalid-feedback">
-              The phone # is required.
-            </div>
-          </div>
-          <br/>
-        </div>
-
-        <div class="col-sm-6">              
-          <div class="input-group has-validation">
-            <span class="input-group-text">City</span>
-            <input type="text" class="form-control" id="city" name="city" placeholder="Chicago" required="" v-model="personne.city">
-            <div class="invalid-feedback">
-              The city value is required.
-            </div>
-          </div>
-          <br/>
-        </div>    
-        
-
-        <!--
-          <div class="col-sm-9">
-            <label for="name" class="form-label">Surname</label>
-            <input type="text" class="form-control" id="surname" name="surname" v-model="personne.surname">
-          </div>
-
-          <div class="col-sm-9">
-            <label for="surname" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" v-model="personne.name">
-          </div>
-
-          <div class="col-sm-9">
-            <label for="phone" class="form-label">Phone</label>
-            <input type="text" class="form-control" id="phone" name="phone" v-model="personne.phone">
-          </div>
+                  
+        <br/>
           
-          <div class="col-sm-9">
-            <label for="city" class="form-label">City</label>
-            <input type="text" class="form-control" id="city" name="city" v-model="personne.city">
-          </div>
-        -->
-
-        <div class="col-sm-9">       
-          <p>{{ message }}</p>       
-          <!--
-            <button @click="creerPersonne" class="btn btn-success">Ajouter</button>
-          -->
-          <button @click="creerPersonne" class="w-20 btn btn-lg btn-primary">Ajouter</button>
-        </div>
-
-        
-      
     </div>
 
     <div v-else>
@@ -112,6 +82,11 @@ export default {
   },
   methods: {
     creerPersonne() {
+      if (this.personne.surname == '' || this.personne.phone == '') {
+        this.message = 'Les champs obligatoires doivent être renseignés';
+        this.submitted = false;   
+      }
+      else {
       PersonneDataService.getAll()
       .then(response => {
         this.nextId = response.data.length + 1;
@@ -143,6 +118,7 @@ export default {
         .catch(e => {
           console.log(e);
         });
+      }
     },
     
     resetForm() {

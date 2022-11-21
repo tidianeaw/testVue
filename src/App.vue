@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="font-family:Bookman Old Style;Arial;Verdana;">
+  <div id="app" style="font-family:Montserrat;Cambria;Helvetica;Open Sans;Verdana;Arial;">
     <!--
     <nav class="navbar navbar-expand navbar-light bg-light" style="background-color: #e3f2fd;">
     -->
