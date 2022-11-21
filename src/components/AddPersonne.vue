@@ -15,7 +15,7 @@
           <div class="col-md">
             <div class="form-floating mb-6">
               <label for="name">Prénom</label>
-              <input type="text" class="form-control" id="name" name="name" v-model="personne.name" placeholder="Novak" >              
+              <input type="text" class="form-control" id="name" name="name" v-model="personne.name" placeholder="Novak" onblur="javascript: if (surname.value=='') alert('Champ prénom obligatoire');" required>              
             </div>
           </div>
        </div>
@@ -31,7 +31,7 @@
           <div class="col-md">
             <div class="form-floating mb-6">
               <label for="city">Ville</label>
-              <input type="text" class="form-control" id="city" name="city" v-model="personne.city" placeholder="Belgrade" >              
+              <input type="text" class="form-control" id="city" name="city" v-model="personne.city" placeholder="Belgrade" onblur="javascript: if (city.value=='') alert('Champ ville obligatoire');" required>              
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     creerPersonne() {
-      if (this.personne.surname == '' || this.personne.phone == '') {
+      if (this.personne.surname == '' || this.personne.name == '' || this.personne.phone == '' || this.personne.city == '') {
         this.message = 'Les champs obligatoires doivent être renseignés';
         this.submitted = false;   
       }

@@ -7,14 +7,14 @@
           <div class="col-md">
             <div class="form-floating mb-6">
               <label for="surname">Nom</label>
-              <input type="text" class="form-control" id="surname" name="surname" v-model="currentPersonne.surname" onblur="javascript: if (surname.value=='') alert('Champ nom obligatoire');" >              
+              <input type="text" class="form-control" id="surname" name="surname" v-model="currentPersonne.surname" onblur="javascript: if (surname.value=='') alert('Champ nom obligatoire');" required>              
             </div>
               
           </div>  
           <div class="col-md">
             <div class="form-floating mb-6">
               <label for="name">Prénom</label>
-              <input type="text" class="form-control" id="name" name="name" v-model="currentPersonne.name">              
+              <input type="text" class="form-control" id="name" name="name" v-model="currentPersonne.name"  onblur="javascript: if (name.value=='') alert('Champ prénom obligatoire');" required>              
             </div>
           </div>
        </div>
@@ -24,13 +24,13 @@
           <div class="col-md">
             <div class="form-floating mb-6">
               <label for="phone">Téléphone</label>
-              <input type="text" class="form-control" id="phone" name="phone" v-model="currentPersonne.phone" onblur="javascript: if (phone.value=='') alert('Champ nom obligatoire');" >              
+              <input type="text" class="form-control" id="phone" name="phone" v-model="currentPersonne.phone" onblur="javascript: if (phone.value=='') alert('Champ téléphone obligatoire');" required>              
             </div>
           </div>          
           <div class="col-md">
             <div class="form-floating mb-6">
               <label for="city">Ville</label>
-              <input type="text" class="form-control" id="city" name="city" v-model="currentPersonne.city">              
+              <input type="text" class="form-control" id="city" name="city" v-model="currentPersonne.city"  onblur="javascript: if (city.value=='') alert('Champ ville obligatoire');" required>              
             </div>
           </div>
         </div>
@@ -83,6 +83,10 @@ export default {
     },
 
     updatePersonne() {
+      if (this.currentPersonne.surname == '' || this.currentPersonne.name == '' || this.currentPersonne.phone == '' || this.currentPersonne.city == '') {
+        this.message = 'Les champs obligatoires doivent être renseignés';        
+      }
+      else {
       PersonneDataService.update(this.currentPersonne)
       .then(response => {
           //this.currentPersonne = response.data;
@@ -92,6 +96,7 @@ export default {
         .catch(e => {
           console.log(e);
         });
+      }
     },
 
     deletePersonne() {
@@ -99,7 +104,6 @@ export default {
       .then(response => {          
           console.log(response.data);
           this.$router.push({path:'/personnes'});
-          //this.$router.push({ name:"/personnes" });
         })
         .catch(e => {
           console.log(e);
